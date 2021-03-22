@@ -13,19 +13,11 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Menu Grid.Column="0" >
+            <Menu>
                 <MenuItem Header="_Recipes" Width="100" Height="30" FontSize="14">
                     <MenuItem Header="_All Recipes" Command="{Binding LoadAllRecipesCommand}"/>
                     <MenuItem Header="_Favorites" Command="{Binding LoadFavoriteRecipesCommand}"/>
                 </MenuItem>
-            </Menu>
-            <Menu Grid.Column="1" >
                 <MenuItem Header="_Categories" Width="100" Height="30" FontSize="14">
                     <MenuItem Header="_Breakfast" Command="{Binding LoadBreakfastsCommand}"/>
                     <MenuItem Header="_Lunch" Command="{Binding LoadLunchesCommand}"/>
@@ -34,10 +26,9 @@
                     <MenuItem Header="_Dessert" Command="{Binding LoadDessertsCommand}"/>
                     <MenuItem Header="_Appetizer" Command="{Binding LoadAppetizersCommand}"/>
                 </MenuItem>
-            </Menu>
-            <Menu Grid.Column="2" >
                 <MenuItem Header="_Add Recipe" Width="100" Height="30" FontSize="14" Command="{Binding LoadEditRecipeViewModelCommand}"/>
             </Menu>
+
         </Grid>
         <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding Recipes}">

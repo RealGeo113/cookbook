@@ -26,12 +26,14 @@ namespace cookbook.ViewModels
             LoadCookbookCommand = new RelayCommand(LoadCookbook);
             EditRecipeCommand = new RelayCommand(EditRecipe);
             RemoveRecipeCommand = new RelayCommand(RemoveRecipe);
+            MarkFavoriteCommand = new RelayCommand(MarkFavorite);
         }
 
         public ICommand LoadCookbookCommand { get; private set; }
         public ICommand EditRecipeCommand { get; private set; }
 
         public ICommand RemoveRecipeCommand { get; private set; }
+        public ICommand MarkFavoriteCommand { get; private set; }
         private void LoadCookbook(object obj)
         {
             if(_cookbookMode == "All")
@@ -48,6 +50,11 @@ namespace cookbook.ViewModels
         {
             Mediator.Notify("RemoveRecipe", obj);
             LoadCookbook("");
+        }
+
+        private void MarkFavorite(object obj)
+        {
+            Mediator.Notify("AddRecipe", obj);
         }
     }
 }

@@ -116,17 +116,54 @@ namespace cookbook.ViewModels
 
         private void AddRecipe(object obj)
         {
-            if (!Recipes.Contains(obj))
+            Recipe recipe = (Recipe)obj;
+            if(recipe.Index != 0)
             {
-                Recipes.Add((Recipe)obj);
-                _dataService.Save(Recipes);
+                foreach (Recipe recipeObj in Recipes)
+                {
+                    if (recipe.Index == recipeObj.Index)
+                    {
+                        recipe.Index = recipeObj.Index;
+
+                        Recipes.Remove(recipeObj);
+                        break;
+                    }
+                }
             }
+            else
+            {
+                int numOfRecipes = Recipes.Count;
+                
+                if(numOfRecipes == 0)
+                {
+                    recipe.Index = 1;
+                }
+                else
+                {
+                    Recipe lastRecipe = Recipes[numOfRecipes - 1];
+                    int index = lastRecipe.Index + 1;
+                    recipe.Index = index;
+                }
+
+                
+            }
+
+            Recipes.Add(recipe);
+            _dataService.Save(Recipes);
         }
 
         private void RemoveRecipe(object obj)
         {
-            Recipes.Remove((Recipe)obj);
-            _dataService.Save(Recipes);
+            Recipe recipe = (Recipe)obj;
+
+            foreach (Recipe recipeObj in Recipes)
+            {
+                if (recipe.Index == recipeObj.Index) {
+                    Recipes.Remove(recipeObj);
+                    break;
+                }
+            }
+            _dataService.Save(Recipes);         
         }
     }
 }

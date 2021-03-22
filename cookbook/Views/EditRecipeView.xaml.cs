@@ -24,6 +24,7 @@ namespace cookbook.Views
     /// </summary>
     public partial class EditRecipeView : UserControl
     {
+        private string _imagePath;
         private Recipe _newRecipe;
         public Recipe NewRecipe
         {
@@ -58,8 +59,8 @@ namespace cookbook.Views
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == true) {
                 imagePath.Content = dialog.SafeFileName;
-                NewRecipe.ImagePath = dialog.FileName;
-                ImagePreview.Source = new BitmapImage(new Uri(NewRecipe.ImagePath));
+                _imagePath = dialog.FileName;
+                ImagePreview.Source = new BitmapImage(new Uri(_imagePath));
             }
         }
 
@@ -251,10 +252,17 @@ namespace cookbook.Views
             NewRecipe.Instructions = instructions;
 
             NewRecipe.IsEditable = true;
-            NewRecipe.IsFavorite = false;
 
             if (!error)
             {
+                Directory.CreateDirectory("Images");
+                string path = string.Format("Images\\{0}", imagePath.Content);
+                if (!File.Exists(path))
+                {
+                    File.Copy(_imagePath, path);
+                }
+                NewRecipe.ImagePath = System.IO.Path.GetFullPath(path);
+
                 ViewModelDataContext.LoadRecipeCommand.Execute(NewRecipe);
             }
         }
@@ -266,7 +274,7 @@ namespace cookbook.Views
             NewRecipe = ViewModelDataContext.Recipe;
 
             if(NewRecipe.ImagePath != null)
-            {
+            {            
                 ImagePreview.Source = new BitmapImage(new Uri(NewRecipe.ImagePath));
             }
 

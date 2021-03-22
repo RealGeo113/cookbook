@@ -14,25 +14,10 @@
         </Grid.RowDefinitions>
 
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
             <Menu FontSize="14">
                 <MenuItem Header="_Back" Command="{Binding LoadCookbookCommand}" Width="100" Height="30"/>
-            </Menu>
-
-            <Menu FontSize="14" Grid.Column="1">
-                <MenuItem Header="_Edit" Command="{Binding EditRecipeCommand}" CommandParameter="{Binding SelectedRecipe}" Width="100" Height="30" IsEnabled="{Binding SelectedRecipe.IsEditable}">
-                    
-                </MenuItem>
-            </Menu>
-
-            <Menu FontSize="14" Grid.Column="2">
-                <MenuItem Header="_Delete" Command="{Binding RemoveRecipeCommand}" CommandParameter="{Binding SelectedRecipe}" Width="100" Height="30" IsEnabled="{Binding SelectedRecipe.IsEditable}">
-
-                </MenuItem>
+                <MenuItem Header="_Edit" Command="{Binding EditRecipeCommand}" CommandParameter="{Binding SelectedRecipe}" Width="100" Height="30" IsEnabled="{Binding SelectedRecipe.IsEditable}"/>
+                <MenuItem Header="_Delete" Command="{Binding RemoveRecipeCommand}" CommandParameter="{Binding SelectedRecipe}" Width="100" Height="30" IsEnabled="{Binding SelectedRecipe.IsEditable}"/>
             </Menu>
         </Grid>
 
@@ -65,7 +50,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock MaxWidth="600" Text="{Binding SelectedRecipe.Name}" Grid.Column="0" FontSize="30" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBlock>
-                            <CheckBox Style="{StaticResource FavoriteCheckbox}" IsChecked="{Binding SelectedRecipe.IsFavorite}" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
+                            <CheckBox Style="{StaticResource FavoriteCheckbox}" IsChecked="{Binding SelectedRecipe.IsFavorite}" Command="{Binding MarkFavoriteCommand}" CommandParameter="{Binding SelectedRecipe}" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
 
                             </CheckBox>
                         </Grid>

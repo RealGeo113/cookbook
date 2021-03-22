@@ -9,6 +9,13 @@ namespace cookbook.Models
 {
     public class Recipe : ObservableObject
     {
+        private int _index;
+        public int Index
+        {
+            get { return _index; }
+            set { OnPropertyChanged(ref _index, value); }
+        }
+
         private string _name;
         public string Name
         {

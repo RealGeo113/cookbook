@@ -11,7 +11,7 @@ namespace cookbook
 {
     public class AppViewModel : ObservableObject
     {
-        private MockDataService _dataService;
+        private JsonRecipeDataService _dataService;
 
         private IPageViewModel _currentView;
         public IPageViewModel CurrentView
@@ -22,7 +22,7 @@ namespace cookbook
 
         public AppViewModel()
         {
-            _dataService = new MockDataService();
+            _dataService = new JsonRecipeDataService();
             CurrentView = new CookbookViewModel(_dataService);
 
             Mediator.Subscribe("LoadRecipeView", LoadRecipeViewModel);
