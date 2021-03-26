@@ -59,7 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppViewModel.cs" />
-    <Compile Include="Models\Ingridient.cs" />
+    <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Instruction.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Services\IPageViewModel.cs" />

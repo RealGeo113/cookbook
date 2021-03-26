@@ -22,8 +22,8 @@ namespace cookbook.Models
             set { _name = value; }
         }
 
-        private int _amount;
-        public int Amount
+        private string _amount;
+        public string Amount
         {
             get { return _amount; }
             set { _amount = value; }

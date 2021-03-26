@@ -50,7 +50,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock MaxWidth="600" Text="{Binding SelectedRecipe.Name}" Grid.Column="0" FontSize="30" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBlock>
-                            <CheckBox Style="{StaticResource FavoriteCheckbox}" IsChecked="{Binding SelectedRecipe.IsFavorite}" Command="{Binding MarkFavoriteCommand}" CommandParameter="{Binding SelectedRecipe}" Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
+                            <CheckBox Style="{StaticResource FavoriteCheckbox}" IsChecked="{Binding SelectedRecipe.IsFavorite}" Command="{Binding MarkFavoriteCommand}" CommandParameter="{Binding SelectedRecipe}" Grid.Column="1" VerticalAlignment="Top" Margin="20,5,0,0">
 
                             </CheckBox>
                         </Grid>
@@ -90,11 +90,11 @@
                                 <DataTemplate>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="30"/>
                                             <ColumnDefinition Width="200"/>
                                             <ColumnDefinition Width="150"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label HorizontalAlignment="Left" Content="{Binding IndexFormatted}"/>
+                                        <Label HorizontalAlignment="Right" Content="{Binding IndexFormatted}"/>
                                         <TextBlock Text="{Binding Name}" Grid.Column="1" TextWrapping="Wrap" Margin="0 5"></TextBlock>
                                         <Label Content="{Binding AmountFormatted}" Grid.Column="2" VerticalAlignment="Top"></Label>
                                     </Grid>

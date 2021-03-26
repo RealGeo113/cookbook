@@ -28,63 +28,63 @@ namespace cookbook.Services
                         {
                             Index = 1,
                             Name = "Tomatos",
-                            Amount = 2,
+                            Amount = "2",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 2,
-                            Name = "Beens",
-                            Amount = 150,
+                            Name = "Beans",
+                            Amount = "150",
                             Unit = "g"
                         },
                         new Ingredient
                         {
                             Index = 3,
                             Name = "Leaves",
-                            Amount = 50,
+                            Amount = "50",
                             Unit = "g"
                         },
                         new Ingredient
                         {
                             Index = 4,
                             Name = "Olives",
-                            Amount = 2,
+                            Amount = "2",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 5,
                             Name = "Corn",
-                            Amount = 50,
+                            Amount = "50",
                             Unit = "g"
                         },
                         new Ingredient
                         {
                             Index = 6,
                             Name = "Carrots",
-                            Amount = 3,
+                            Amount = "3",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 7,
                             Name = "Pepper - Red",
-                            Amount = 1,
+                            Amount = "1",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 8,
                             Name = "Pepper - Yellow",
-                            Amount = 1,
+                            Amount = "1",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 9,
                             Name = "Potato",
-                            Amount = 1,
+                            Amount = "1",
                             Unit = ""
                         },
                     },
@@ -123,21 +123,21 @@ namespace cookbook.Services
                         {
                             Index = 1,
                             Name = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec justo ut mi dictum pharetra. Aliquam luctus nisi vel libero consectetur aliquam. Suspendisse pharetra urna sed lorem ultricies consequat. Pellentesque blandit aliquet mauris, sed convallis turpis molestie ut. Maecenas tristique nec ligula ac maximus. Mauris sodales, erat ac pharetra molestie, justo libero euismod ante, in varius sem enim id augue. Phasellus a urna enimm.",
-                            Amount = 2,
+                            Amount = "2",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 2,
                             Name = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec justo ut mi dictum pharetra. Aliquam luctus nisi vel libero consectetur aliquam. Suspendisse pharetra urna sed lorem ultricies consequat. Pellentesque blandit aliquet mauris, sed convallis turpis molestie ut. Maecenas tristique nec ligula ac maximus. Mauris sodales, erat ac pharetra molestie, justo libero euismod ante, in varius sem enim id augue. Phasellus a urna enimm.",
-                            Amount = 3,
+                            Amount = "3",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 3,
                             Name = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec justo ut mi dictum pharetra. Aliquam luctus nisi vel libero consectetur aliquam. Suspendisse pharetra urna sed lorem ultricies consequat. Pellentesque blandit aliquet mauris, sed convallis turpis molestie ut. Maecenas tristique nec ligula ac maximus. Mauris sodales, erat ac pharetra molestie, justo libero euismod ante, in varius sem enim id augue. Phasellus a urna enimm.",
-                            Amount = 4,
+                            Amount = "4",
                             Unit = ""
                         }
                     },
@@ -178,21 +178,21 @@ namespace cookbook.Services
                         {
                             Index = 1,
                             Name = "3",
-                            Amount = 3,
+                            Amount = "3",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 2,
                             Name = "4",
-                            Amount = 4,
+                            Amount = "4",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 3,
                             Name = "5",
-                            Amount = 5,
+                            Amount = "5",
                             Unit = ""
                         }
                     },
@@ -233,21 +233,21 @@ namespace cookbook.Services
                         {
                             Index = 1,
                             Name = "3",
-                            Amount = 3,
+                            Amount = "3",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 2,
                             Name = "4",
-                            Amount = 4,
+                            Amount = "4",
                             Unit = ""
                         },
                         new Ingredient
                         {
                             Index = 3,
                             Name = "5",
-                            Amount = 5,
+                            Amount = "5",
                             Unit = ""
                         }
                     },

@@ -68,6 +68,7 @@ namespace cookbook.Views
         {
             IEnumerable<string> units = new string[]
             {
+                "",
                 "g",
                 "dg",
                 "kg",
@@ -209,16 +210,7 @@ namespace cookbook.Views
                 }
                 else
                 {
-                    int amount;
-                    if (int.TryParse(((TextBox)stackPanel.Children[1]).Text, out amount))
-                    {
-                        ingredient.Amount = amount;
-                    }
-                    else
-                    {
-                        ((TextBox)stackPanel.Children[0]).BorderBrush = Brushes.Red;
-                        error = true;
-                    }
+                    ingredient.Amount = ((TextBox)stackPanel.Children[1]).Text;
                 }
 
                 ComboBox comboBox = (ComboBox)stackPanel.Children[2];
@@ -255,13 +247,21 @@ namespace cookbook.Views
 
             if (!error)
             {
-                Directory.CreateDirectory("Images");
-                string path = string.Format("Images\\{0}", imagePath.Content);
-                if (!File.Exists(path))
+                if(imagePath.Content != "")
                 {
-                    File.Copy(_imagePath, path);
+                    Directory.CreateDirectory("Images");
+                    string path = string.Format("Images\\{0}", imagePath.Content);
+                    if (!File.Exists(path))
+                    {
+                        File.Copy(_imagePath, path);
+                        NewRecipe.ImagePath = System.IO.Path.GetFullPath(path);
+                    }
+                    else
+                    {
+                        NewRecipe.ImagePath = System.IO.Path.GetFileName(path);
+                    }
                 }
-                NewRecipe.ImagePath = System.IO.Path.GetFullPath(path);
+                
 
                 ViewModelDataContext.LoadRecipeCommand.Execute(NewRecipe);
             }
@@ -317,10 +317,21 @@ namespace cookbook.Views
                 for (int i = 0; i < NewRecipe.Instructions.Length; i++)
                 {
                     Instruction instruction = NewRecipe.Instructions[i];
+                    string text;
+                    if (instruction != null)
+                    {
+                        text = instruction.Content;
+                    }
+                    else
+                    {
+                        text = "";
+                    }
+
                     TextBox textBox = new TextBox
                     {
-                        Text = instruction.Content
+                        Text = text
                     };
+
                     InstructionList.Children.Add(textBox);
                 }
             }

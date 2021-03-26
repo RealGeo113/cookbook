@@ -9,7 +9,7 @@
     <Grid Margin="0 0 0 3">
         <Grid MaxHeight="300">
             <Image Source="{Binding ImagePath}" Stretch="UniformToFill" VerticalAlignment="Center"></Image>
-            <Rectangle Fill="Black" Opacity="0.4"/>
+            <Rectangle Fill="Black" Opacity="0.6"/>
         </Grid>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -26,11 +26,11 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="{Binding TimeFormatted}" Foreground="White" Grid.Column="0"/>
-                <Label Content="{Binding PeopleFormatted}" Foreground="White" Grid.Column="1"/>
+                <Label Content="{Binding TimeFormatted}" Foreground="White" Grid.Column="0" FontSize="14"/>
+                <Label Content="{Binding PeopleFormatted}" Foreground="White" Grid.Column="1" FontSize="14"/>
             </Grid>
-            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Grid.Row="2" Foreground="White" MaxWidth="400" HorizontalAlignment="Left"/>
-            <Button Content="Show Recipe" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.LoadRecipeCommand}" CommandParameter="{Binding}" Width="100" Height="30" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Right"/>
+            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Grid.Row="2" Foreground="White" MaxWidth="500" HorizontalAlignment="Left" FontSize="20"/>
+            <Button Content="Show Recipe" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.LoadRecipeCommand}" CommandParameter="{Binding}" Width="100" Height="30" Grid.Row="3" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </UserControl>
