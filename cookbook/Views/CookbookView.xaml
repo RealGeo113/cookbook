@@ -22,7 +22,7 @@
                     <MenuItem Header="_Breakfast" Command="{Binding LoadBreakfastsCommand}"/>
                     <MenuItem Header="_Lunch" Command="{Binding LoadLunchesCommand}"/>
                     <MenuItem Header="_Dinner" Command="{Binding LoadDinnersCommand}"/>
-                    <MenuItem Header="_Supper" Command="{Binding LoadSuppersCommand}"/>
+                    <MenuItem Header="_Soup" Command="{Binding LoadSoupsCommand}"/>
                     <MenuItem Header="_Dessert" Command="{Binding LoadDessertsCommand}"/>
                     <MenuItem Header="_Appetizer" Command="{Binding LoadAppetizersCommand}"/>
                 </MenuItem>
@@ -31,13 +31,15 @@
 
         </Grid>
         <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding Recipes}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <local:CookbookItemView/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Grid HorizontalAlignment="Left">
+                <ItemsControl ItemsSource="{Binding Recipes}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:CookbookItemView/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </UserControl>

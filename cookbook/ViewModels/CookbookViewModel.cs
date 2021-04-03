@@ -28,7 +28,7 @@ namespace cookbook.ViewModels
         public ICommand LoadAllRecipesCommand { get; private set; }
         public ICommand LoadFavoriteRecipesCommand { get; private set; }
         public ICommand LoadDessertsCommand { get; private set; }
-        public ICommand LoadSuppersCommand { get; private set; }
+        public ICommand LoadSoupsCommand { get; private set; }
         public ICommand LoadLunchesCommand { get; private set; }
         public ICommand LoadDinnersCommand { get; private set; }
         public ICommand LoadBreakfastsCommand { get; private set; }
@@ -43,7 +43,7 @@ namespace cookbook.ViewModels
             LoadFavoriteRecipesCommand = new RelayCommand(LoadFavoriteRecipes);
             LoadAllRecipesCommand = new RelayCommand(LoadRecipes);
             LoadDessertsCommand = new RelayCommand(LoadDesserts);
-            LoadSuppersCommand = new RelayCommand(LoadSuppers);
+            LoadSoupsCommand = new RelayCommand(LoadSoups);
             LoadLunchesCommand = new RelayCommand(LoadLunches);
             LoadDinnersCommand = new RelayCommand(LoadDinners);
             LoadBreakfastsCommand = new RelayCommand(LoadBreakfasts);
@@ -85,7 +85,7 @@ namespace cookbook.ViewModels
             Recipes = new ObservableCollection<Recipe>(_dataService.GetRecipes().Where(c => c.Category == "Dessert"));
         }
 
-        private void LoadSuppers(object obj)
+        private void LoadSoups(object obj)
         {
             Recipes = new ObservableCollection<Recipe>(_dataService.GetRecipes().Where(c => c.Category == "Soup"));
         }
@@ -140,8 +140,15 @@ namespace cookbook.ViewModels
                 }
                 else
                 {
-                    Recipe lastRecipe = Recipes[numOfRecipes - 1];
-                    int index = lastRecipe.Index + 1;
+                    int maxIndex = 0;
+                    foreach(Recipe recipeObj in Recipes)
+                    {
+                        if(recipeObj.Index > maxIndex)
+                        {
+                            maxIndex = recipeObj.Index;
+                        }
+                    }
+                    int index = maxIndex + 1;
                     recipe.Index = index;
                 }
 

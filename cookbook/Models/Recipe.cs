@@ -64,14 +64,29 @@ namespace cookbook.Models
                 {
                     return "Time: 1 minute";
                 }
-                if (Time < 120)
+                if (Time < 59)
                 {
                     return string.Format("Time: {0} minutes", _time.ToString());
                 }
                 else
                 {
-                    float hours = _time / 60;
-                    return string.Format("Time: {0} hours", hours.ToString());
+                    int hours = _time / 60;
+                    int minutes = _time - (hours * 60);
+                    if(minutes == 0)
+                    {
+                        return string.Format("Time: {0} hours", hours.ToString());
+                    }
+                    else
+                    {
+                        if (minutes == 1)
+                        {
+                            return string.Format("Time: {0} hours 1 minute", hours.ToString());
+                        }
+                        else
+                        {
+                            return string.Format("Time: {0} hours {1} minutes", hours.ToString(), minutes.ToString());
+                        }
+                    }
                 };
             }
 

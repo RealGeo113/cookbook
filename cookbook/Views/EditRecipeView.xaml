@@ -72,9 +72,9 @@
                                 <ComboBoxItem Content="Breakfast" IsSelected="True"/>
                                 <ComboBoxItem Content="Lunch"/>
                                 <ComboBoxItem Content="Dinner"/>
-                                <ComboBoxItem Content="Supper"/>
+                                <ComboBoxItem Content="Soup"/>
                                 <ComboBoxItem Content="Dessert"/>
-                                <ComboBoxItem Content="Apetizer"/>
+                                <ComboBoxItem Content="Appetizer"/>
                             </ComboBox>
                         </Grid>
 
@@ -91,10 +91,13 @@
                         <Grid Grid.Row="3" Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Content="Time:"/>
                             <TextBox Grid.Column="1" Name="Time" Width="100" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                            <Label Grid.Column="2" Content="minutes"/>
                         </Grid>
                         <Grid Grid.Row="4" Margin="5">
                             <Grid.RowDefinitions>
@@ -132,6 +135,11 @@
                                 <Style TargetType="{x:Type ComboBox}">
                                     <Setter Property="Margin" Value="0,0,0,5"/>
                                     <Setter Property="Width" Value="100"/>
+                                    <Setter Property="Height" Value="30"/>
+                                </Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Margin" Value="10,0,0,5"/>
+                                    <Setter Property="Padding" Value="5,5,5,5"/>
                                     <Setter Property="Height" Value="30"/>
                                 </Style>
                             </StackPanel.Resources>

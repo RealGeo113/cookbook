@@ -24,6 +24,7 @@
         <BitmapImage x:Key="IsFavoriteTrueImage" UriSource="Resources/IsFavoriteTrue.png"/>
         <BitmapImage x:Key="IsFavoriteFalseImage" UriSource="Resources/IsFavoriteFalse.png"/>
         <BitmapImage x:Key="IsFavoriteHoverImage" UriSource="Resources/IsFavoriteHover.png"/>
+        <BitmapImage x:Key="RemoveButtonImage" UriSource="Resources/RemoveButton.png"/>
 
         <Style x:Key="FavoriteCheckbox" TargetType="{x:Type CheckBox}">
             <Setter Property="Template">
@@ -54,6 +55,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="RemoveButton" TargetType="{x:Type Button}">
+            <Setter Property="Content" Value="Remove"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Margin" Value="10,0,0,5"/>
+            <Setter Property="Padding" Value="5,5,5,5"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
 
+        <Style x:Key="Test" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Border CornerRadius="3"
+                                    BorderThickness="2"
+                                    BorderBrush="Green">        
+                                <ContentPresenter Content="{TemplateBinding Button.Content}" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

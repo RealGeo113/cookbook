@@ -34,7 +34,8 @@ namespace cookbook.Services
 
         public void Save(IEnumerable<Recipe> recipes)
         {
-            var serializedRecipes = JsonConvert.SerializeObject(recipes);
+            var orderedRecipes = recipes.OrderBy(recipe => recipe.Index);
+            var serializedRecipes = JsonConvert.SerializeObject(orderedRecipes, Formatting.Indented);
             File.WriteAllText(_dataPath, serializedRecipes);
         }
     }

@@ -45,11 +45,11 @@
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="600"/>
+                                <ColumnDefinition Width="60"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock MaxWidth="600" Text="{Binding SelectedRecipe.Name}" Grid.Column="0" FontSize="30" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Text="{Binding SelectedRecipe.Name}" Grid.Column="0" FontSize="30" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBlock>
                             <CheckBox Style="{StaticResource FavoriteCheckbox}" IsChecked="{Binding SelectedRecipe.IsFavorite}" Command="{Binding MarkFavoriteCommand}" CommandParameter="{Binding SelectedRecipe}" Grid.Column="1" VerticalAlignment="Top" Margin="20,5,0,0">
 
                             </CheckBox>

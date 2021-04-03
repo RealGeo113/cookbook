@@ -47,7 +47,6 @@ namespace cookbook.Views
 
         void UserControl1_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            // You can also validate the data going into the DataContext using the event args
             if(NewRecipe == null)
             {
                 LoadRecipe();
@@ -64,7 +63,7 @@ namespace cookbook.Views
             }
         }
 
-        private void IngredientStackPanel(string name = null, string amount = null, string unit = "g")
+        private void IngredientStackPanel(string name = null, string amount = null, string unit = "")
         {
             IEnumerable<string> units = new string[]
             {
@@ -73,10 +72,13 @@ namespace cookbook.Views
                 "dg",
                 "kg",
                 "cup",
-                "spoon",
+                "tablespoon",
+                "teaspoon",
                 "ml",
                 "dl",
                 "l",
+                "oz.",
+                "fl. oz.",
                 "unit"
             };
             StackPanel IngredientStackPanel = new StackPanel
@@ -100,22 +102,66 @@ namespace cookbook.Views
                 Text = amount
             };
 
+            Button button = new Button()
+            {
+                Content = "Remove",
+            };
+
+            button.Click += RemoveIngredientButton_Click;
+
             IngredientStackPanel.Children.Add(nameTextBox);
             IngredientStackPanel.Children.Add(amountTextBox);
             IngredientStackPanel.Children.Add(comboBox);
+            IngredientStackPanel.Children.Add(button);
 
             IngredientList.Children.Add(IngredientStackPanel);
         }
 
+        private void InstructionStackPanel(string text = null)
+        {
+            StackPanel InstructionStackPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal
+            };
+
+            Button button = new Button()
+            {
+                Style = Application.Current.Resources["RemoveButton"] as Style
+            };
+
+            TextBox textbox = new TextBox()
+            {
+                Text = text
+            };
+           
+            button.Click += RemoveInstructionButton_Click;
+
+            InstructionStackPanel.Children.Add(textbox);
+            InstructionStackPanel.Children.Add(button);
+
+            InstructionList.Children.Add(InstructionStackPanel);
+        }
+
+        private void RemoveIngredientButton_Click(object sender, RoutedEventArgs e) {
+            Button button = (Button)sender;
+            StackPanel parent = (StackPanel)button.Parent;
+            IngredientList.Children.Remove(parent);
+        }
+
+        private void RemoveInstructionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel parent = (StackPanel)button.Parent;
+            InstructionList.Children.Remove(parent);
+        }
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
             IngredientStackPanel();
-            //IngredientList.Children.Add(new IngredientForm());
         }
 
         private void AddInstruction_Click(object sender, RoutedEventArgs e)
         {
-            InstructionList.Children.Add(new TextBox());
+            InstructionStackPanel();
         }
 
         private void SaveRecipe_Click(object sender, RoutedEventArgs e)
@@ -226,16 +272,17 @@ namespace cookbook.Views
 
             for (int i = 0; i < NumOfInstructions; i++)
             {
-                if (((TextBox)InstructionList.Children[i]).Text == "")
+                StackPanel stackPanel = (StackPanel)InstructionList.Children[i];
+                if (((TextBox)stackPanel.Children[0]).Text == "")
                 {
-                    ((TextBox)InstructionList.Children[i]).BorderBrush = Brushes.Red;
+                    ((TextBox)stackPanel.Children[0]).BorderBrush = Brushes.Red;
                 }
                 else
                 {
                     Instruction instruction = new Instruction
                     {
                         Index = i + 1,
-                        Content = ((TextBox)InstructionList.Children[i]).Text
+                        Content = ((TextBox)stackPanel.Children[0]).Text
                     };
                     instructions[i] = instruction;
                 }
@@ -258,7 +305,7 @@ namespace cookbook.Views
                     }
                     else
                     {
-                        NewRecipe.ImagePath = System.IO.Path.GetFileName(path);
+                        NewRecipe.ImagePath = System.IO.Path.GetFullPath(path);
                     }
                 }
                 
@@ -295,7 +342,30 @@ namespace cookbook.Views
             
             if(NewRecipe.Category != null)
             {
-                Category.SelectedItem = NewRecipe.Category;
+                if(NewRecipe.Category == "Breakfast")
+                {
+                    Category.SelectedIndex = 0;
+                }
+                if(NewRecipe.Category == "Lunch")
+                {
+                    Category.SelectedIndex = 1;
+                }
+                if (NewRecipe.Category == "Dinner")
+                {
+                    Category.SelectedIndex = 2;
+                }
+                if (NewRecipe.Category == "Soup")
+                {
+                    Category.SelectedIndex = 3;
+                }
+                if (NewRecipe.Category == "Dessert")
+                {
+                    Category.SelectedIndex = 4;
+                }
+                if (NewRecipe.Category == "Appetizer")
+                {
+                    Category.SelectedIndex = 5;
+                }
             }
             
             if(NewRecipe.Description != null)
@@ -308,7 +378,7 @@ namespace cookbook.Views
                 for (int i = 0; i < NewRecipe.Ingredients.Length; i++)
                 {
                     Ingredient ingredient = NewRecipe.Ingredients[i];
-                    IngredientStackPanel(ingredient.Name, ingredient.Amount.ToString(), ingredient.Unit);
+                    IngredientStackPanel(ingredient.Name, ingredient.Amount, ingredient.Unit);
                 }
             }
             
@@ -317,22 +387,7 @@ namespace cookbook.Views
                 for (int i = 0; i < NewRecipe.Instructions.Length; i++)
                 {
                     Instruction instruction = NewRecipe.Instructions[i];
-                    string text;
-                    if (instruction != null)
-                    {
-                        text = instruction.Content;
-                    }
-                    else
-                    {
-                        text = "";
-                    }
-
-                    TextBox textBox = new TextBox
-                    {
-                        Text = text
-                    };
-
-                    InstructionList.Children.Add(textBox);
+                    InstructionStackPanel(instruction.Content);
                 }
             }
         }
